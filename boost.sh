@@ -77,7 +77,7 @@ echo "BOOST_LIBS: $BOOST_LIBS"
 # : ${BOOST_LIBS:="chrono context filesystem graph_parallel iostreams locale mpi program_options python regex serialization signals system thread timer wave"}
 # try to pick up BOOST_LIBS from environment variable first
 # if it's empty, then build with serialization thread system for a demo
-[[ -z "$BOOST_LIBS" ]] && BOOST_LIBS="serialization thread system"
+[[ -z "$BOOST_LIBS" ]] && BOOST_LIBS="chrono context filesystem iostreams locale program_options regex serialization signals system thread timer wave date_time math random exception"
 
 # : ${BOOST_LIBS:="serialization"}
 # : ${BOOST_LIBS:="atomic chrono date_time exception filesystem graph graph_parallel iostreams locale mpi program_options python random regex serialization signals system test thread timer wave"}
@@ -115,11 +115,13 @@ BOOST_SRC=$SRCDIR/boost_${BOOST_VERSION_SFX}
 #===============================================================================
 
 IPHONE_OS_PLATFORM_PATH=$(xcrun --sdk iphoneos --show-sdk-platform-path)
-ARM_DEV_DIR=$IPHONE_OS_PLATFORM_PATH/Developer/usr/bin
+#ARM_DEV_DIR=$IPHONE_OS_PLATFORM_PATH/Developer/usr/bin
+ARM_DEV_DIR=/usr/bin
 IPHONE_OS_SDK_PATH=$(xcrun --sdk iphoneos --show-sdk-path)
 
 IPHONE_SIMULATOR_PLATFORM_PATH=$(xcrun --sdk iphonesimulator --show-sdk-platform-path)
-SIM_DEV_DIR=$IPHONE_SIMULATOR_PLATFORM_PATH/Developer/usr/bin
+#SIM_DEV_DIR=$IPHONE_SIMULATOR_PLATFORM_PATH/Developer/usr/bin
+SIM_DEV_DIR=/usr/bin
 IPHONE_SIMULATOR_SDK_PATH=$(xcrun --sdk iphonesimulator --show-sdk-path)
 
 ARM_COMBINED_LIB=$IOSBUILDDIR/lib_boost_arm.a
